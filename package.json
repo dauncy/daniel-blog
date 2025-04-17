@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "packageManager": "yarn@4.5.0",
   "scripts": {
     "clean": "rm -rf dist",
     "build:css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css",
