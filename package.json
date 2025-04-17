@@ -1,18 +1,19 @@
 {
   "name": "daniel-blog",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "packageManager": "yarn@4.5.0",
   "scripts": {
     "clean": "rm -rf dist",
-    "build:css": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css",
+    "build:css": " npx tailwindcss -i ./src/styles.css  -o dist/styles.css --minify",
     "build:ts": "esbuild src/script.ts --bundle --outfile=dist/js/script.js",
     "build:11ty": "eleventy",
-    "build": "yarn clean && yarn build:css && yarn build:11ty",
+    "build": "yarn clean && ELEVENTY_PRODUCTION=true eleventy && NODE_ENV=production npx tailwindcss -i ./src/styles.css  -o dist/styles.css --minify",
     "dev:tailwind": "npx tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
     "dev:11ty": "eleventy --watch --serve",
-    "start": "run-p dev:tailwind dev:11ty"
+    "start": "run-p dev:tailwind dev:11ty",
+    "start:prod": "eleventy --serve"
   },
   "keywords": [],
   "author": "",

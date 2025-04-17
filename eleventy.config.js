@@ -6,54 +6,51 @@ const loadLanguages    = require("prismjs/components/index.js");
 loadLanguages(["typescript", "tsx"]);
 
 module.exports = function(eleventyConfig) {
-  // Watch & passthrough your CSS (so these overrides actually land)
-  eleventyConfig.addPassthroughCopy({ "src/styles.css": "styles.css" });
   eleventyConfig.addWatchTarget("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/fonts");
 
-  // …after loadLanguages(["typescript","tsx"])…
 
-eleventyConfig.addPlugin(syntaxHighlight, {
-  lineSeparator: "\n",
-  preAttributes: { tabindex: 0 },
-  init: ({ Prism }) => {
-    // 1) Mark function-declaration names as `.token.function`
-    Prism.languages.insertBefore("tsx", "keyword", {
-      "function-definition": {
-        // capture the name after `function `
-        pattern: /(\bfunction\s+)[A-Za-z_$][\w$]*(?=\s*\()/,
-        lookbehind: true,
-        alias: "function"
-      }
-    });
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    lineSeparator: "\n",
+    preAttributes: { tabindex: 0 },
+    init: ({ Prism }) => {
+      // 1) Mark function-declaration names as `.token.function`
+      Prism.languages.insertBefore("tsx", "keyword", {
+        "function-definition": {
+          // capture the name after `function `
+          pattern: /(\bfunction\s+)[A-Za-z_$][\w$]*(?=\s*\()/,
+          lookbehind: true,
+          alias: "function"
+        }
+      });
 
-    // 2) Highlight parameters in functions / destructuring
-    Prism.languages.insertBefore("tsx", "function", {
-      parameter: {
-        pattern: /[A-Za-z_$][\w$]*(?=\s*[:=,\)\}])/,
-        greedy: false
-      }
-    });
+      // 2) Highlight parameters in functions / destructuring
+      Prism.languages.insertBefore("tsx", "function", {
+        parameter: {
+          pattern: /[A-Za-z_$][\w$]*(?=\s*[:=,\)\}])/,
+          greedy: false
+        }
+      });
 
-    // 3) PascalCase → .token.type
-    Prism.languages.insertBefore("tsx", "keyword", {
-      type: {
-        pattern: /\b[A-Z][a-zA-Z0-9_]*\b/,
-        alias: "type"
-      }
-    });
+      // 3) PascalCase → .token.type
+      Prism.languages.insertBefore("tsx", "keyword", {
+        type: {
+          pattern: /\b[A-Z][a-zA-Z0-9_]*\b/,
+          alias: "type"
+        }
+      });
 
-    // 4) Vars or type‑literal props (with optional `?`)
-    Prism.languages.insertBefore("tsx", "keyword", {
-      variable: {
-        pattern: /[A-Za-z_$][\w$]*(?=\s*[:=]|\s*\?)/,
-        greedy: true
-      }
-    });
+      // 4) Vars or type‑literal props (with optional `?`)
+      Prism.languages.insertBefore("tsx", "keyword", {
+        variable: {
+          pattern: /[A-Za-z_$][\w$]*(?=\s*[:=]|\s*\?)/,
+          greedy: true
+        }
+      });
 
-  }
-});
+    }
+  });
 
 
   // …your existing collections & filters…

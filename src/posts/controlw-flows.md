@@ -1,7 +1,7 @@
 ---
 layout: layouts/blog-post.html
 title: NextJS Code Design - Control Flows
-date: 2025-04-15
+date: 2025-04-17
 tags: 
   - posts
 excerpt: What are control flow components...? Why do I use them...? 
