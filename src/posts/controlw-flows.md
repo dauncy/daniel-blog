@@ -26,7 +26,7 @@ export default function Page() {
 }
 ```
 
-React's Suspense compoent is a control flow component. The suspense component takes in two  separate nodes as props: `children` and `fallback`. While the promise node resolves, Suspense renders the fallback. Once the promise has been resolved, the component will render the value. Here's a pseudo-coe breakdown:
+React's Suspense component is a control flow component. The suspense component takes in two  separate nodes as props: `children` and `fallback`. While the promise node resolves, Suspense renders the fallback. Once the promise has been resolved, the component will render the value. Here's a pseudo-coe breakdown:
 
 ```tsx
 export const Suspense = ({ 
