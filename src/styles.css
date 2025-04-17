@@ -1,0 +1,271 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'SpecialGothic';
+  src: url('/fonts/SpecialGothic-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* MarcellusSC-Regular.ttf */
+@font-face {
+  font-family: 'MarcellusSCRegular';
+  src: url('/fonts/MarcellusSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.blog-post {
+  hr {
+    @apply h-[3.5px] my-2 rounded-full bg-[#f5f5f7]
+  }
+
+  h2 {
+    @apply text-2xl font-[700] text-[#1d1d1f] 
+  }
+}
+
+pre > code {
+  font-size: 0.875rem !important; /* 14px */
+  line-height: 1.25rem !important; /* 20px */
+}
+
+:not(pre) > code {
+  @apply py-1 px-2 text-red-600 bg-stone-200 rounded-md shadow-sm text-sm;
+}
+
+/* VS Code Dark Modern Theme for 11ty syntax highlighting */
+/* Optimized for TypeScript and TSX */
+.highlight-line {
+  display: block;
+  padding: 0.125em 1em;
+  text-decoration: none;
+  position: relative;
+}
+
+.highlight-line:empty:before {
+  content: " ";
+}
+
+.highlight-line:not(:last-child) {
+  min-height: 1.25em;
+} 
+.highlight-line-isdir {
+  color: #9DA5B4;
+  background-color: #30353A;
+}
+
+.highlight-line-active {
+  background-color: #3A3D41;
+}
+
+.highlight-line-add {
+  background-color: rgba(40, 124, 82, 0.4);
+}
+
+.highlight-line-remove {
+  background-color: rgba(218, 55, 82, 0.4);
+}
+
+/* Base styles */
+pre[class*="language-"] {
+  background: #1F1F1F; /* Dark Modern background */
+  color: #D4D4D4; /* Base text color */
+  font-family: 'Cascadia Code', Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 2;
+  hyphens: none;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 4px;
+}
+
+pre[class*="language-tsx"] {
+  color: #9CDCFE; /* Base text color */
+}
+
+/* TypeScript & TSX tokens */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6A9955; /* Comments */
+}
+
+.token.punctuation {
+  color: #D4D4D4; /* Punctuation */
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol {
+  color: #569CD6; /* Properties, tags, booleans, etc. */
+}
+
+.token.selector,
+.token.attr-name,
+.token.char,
+.token.builtin {
+  color: #4EC9B0; /* Strings */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #D4D4D4; /* Operators */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #C586C0; /* Keywords */
+}
+
+.token.keyword.undefined-keyword,.token.undefined-keyword,.undefined-keyowrd {
+  color: #569CD6 !important; /* VSCode dark blue for undefined keyword */
+}
+
+.token.function {
+  color: #DCDCAA  /* Functions */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #9CDCFE; /* Variables */
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* TypeScript/TSX specific */
+.language-typescript .token.class-name,
+.language-tsx .token.class-name,
+.language-typescript .token.maybe-class-name,
+.language-tsx .token.maybe-class-name {
+  color: #4EC9B0; /* Class names */
+}
+
+.language-typescript .token.parameter,
+.language-tsx .token.parameter {
+  color: #9CDCFE /* Parameters */
+}
+
+.language-typescript .token.type,
+.language-tsx .token.type {
+  color: #4EC9B0; /* Types */
+}
+
+.language-typescript .token.interface,
+.language-tsx .token.interface {
+  color: #4EC9B0; /* Interfaces */
+}
+
+.language-typescript .token.enum,
+.language-tsx .token.enum {
+  color: #4EC9B0; /* Enums */
+}
+
+.language-typescript .token.decorator,
+.language-tsx .token.decorator {
+  color: #DCDCAA; /* Decorators */
+}
+
+/* JSX/TSX specific */
+.language-tsx .token.tag {
+  color: #569CD6; /* JSX/TSX tags */
+}
+
+.language-tsx .token.attr-name {
+  color: #9CDCFE; /* JSX/TSX attributes */
+}
+
+.language-tsx .token.attr-value,.token.string {
+  color: #CE9178 !important; /* JSX/TSX attribute values */
+}
+
+.language-tsx .token.script {
+  color: #D4D4D4; /* JSX/TSX script */
+}
+
+/* Code line numbers if you're using them */
+.line-numbers .line-numbers-rows {
+  border-right-color: #333;
+}
+
+.line-numbers-rows > span:before {
+  color: #999;
+}
+
+/* Light up the current line when using line highlighting */
+.line-highlight {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* For diff highlighting */
+.token.deleted {
+  color: #F14C4C;
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+.token.inserted {
+  color: #4EC9B0;
+  background-color: rgba(0, 255, 128, 0.1);
+}
+
+/* Improve code block readability with a subtle border */
+pre[class*="language-"] {
+  border: 1px solid #3A3A3A;
+}
+
+/* Add a subtle glow to give depth like VS Code */
+pre[class*="language-"] {
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.language-typescript .token.type-operator,
+.language-tsx .token.type-operator {
+  color: #4EC9B0; /* VS Code dark theme type color */
+}
+
+/* Specific type identifiers */
+.language-typescript .token.type-operator .token.identifier,
+.language-tsx .token.type-operator .token.identifier {
+  color: #4EC9B0; /* VS Code dark theme type color */
+}
+
+/* For standalone type identifiers */
+.language-typescript .token.identifier.type,
+.language-tsx .token.identifier.type {
+  color: #4EC9B0; /* VS Code dark theme type color */
+} 

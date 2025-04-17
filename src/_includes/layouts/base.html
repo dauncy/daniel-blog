@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ title }}</title>
+  <link href="/styles.css" rel="stylesheet">
+  <link rel="icon" href="/images/daniel-wilder.webp" />
+  <link rel="canonical" href="https://blog.danielwilder.dev{{ permalink }}">
+  <meta property="og:site_name" content="Daniel Wilder's Blog">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:url" content="https://blog.danielwilder.dev{{ permalink }}">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_US">  
+  {%- if  date %}
+    <meta property="article:published_time" content="{{ date }}">
+  {%- endif -%}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:url" content="https://blog.danielwilder.dev{{ permalink }}">
+  <meta name="twitter:label1" content="Written by">
+  <meta name="twitter:data1" content="Daniel Wilder">
+</head>
+<body class="font-body flex flex-col min-h-full">
+  <main class="max-w-[1536px] mx-auto w-full flex-grow">
+    <div class="w-full h-max px-4 py-5 md:py-10 flex items-start justify-center flex-row gap-4 bg-[#f5f5f7] border-zinc-200 border-x border-b">
+      <div class="flex items-center justify-center rounded-full border border-[#1d1d1f] size-20 md:size-28">
+        <img src="/images/daniel-wilder.webp" alt="Daniel Wilder" loading="eager" class="size-full object-cover flex rounded-full object-top"/>
+      </div>
+      <div class="flex flex-col md:gap-y-1 md:mt-2 md:w-max">
+        <p class="font-[MarcellusSCRegular] font-[1000] text-[#1d1d1f] text-3xl md:text-4xl tracking-tight">Daniel Wilder</p>
+        <p class="font-[150] text-[#1d1d1f]/80 max-w-[302px] md:w-[448px] leading-[1.25]">Web developer, software engineer, technologist. I write about things.</p>
+        <div class="flex items-center gap-x-4 flex-row w-full mt-1.5">
+          <a href="/">
+            <p class="underline font-[600] font-[MarcellusSCRegular] tracking-tight text-[#1d1d1f] text-sm px-2 py-1.5">Blog</p>
+          </a>
+          <div class="h-5 w-[1px] bg-[#1d1d1f]/80 mt-1"></div>
+          <a href="https://danielwilder.dev">
+            <p class="underline font-[600] font-[MarcellusSCRegular] tracking-tight text-[#1d1d1f] text-sm px-2 py-1.5">About</p>
+          </a>
+          <div class="h-5 w-[1px] bg-[#1d1d1f]/80 mt-1"></div>
+          <a href="https://danielwilder.dev/#contact">
+            <p class="underline font-[600] font-[MarcellusSCRegular] tracking-tight text-[#1d1d1f] text-sm px-2 py-1.5">Contact</p>
+          </a>  
+        </div>
+      </div>
+    </div>
+    {{ content | safe }}
+  </main>
+  <footer class="py-4 w-full items-center justify-center flex gap-x-2">
+    <p class="text-sm font-[SpecialGothic] font-[100] items-center">
+      ©2025 
+      <span class="text-black font-bold text-xl"> • </span>
+      Built with 11ty
+    </p>
+  </footer>
+</body>
+</html>

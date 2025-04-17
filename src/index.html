@@ -1,0 +1,28 @@
+---
+layout: layouts/base.html
+title: Daniel Wilder - Web Developer & Software Engineer
+description: figuring this out as I go...
+permalink: /
+---
+
+<div class="w-full max-w-4xl mx-auto md:px-4 py-8">
+  
+  <div class="grid grid-cols-1  gap-6">
+    {%- for post in collections.posts %}
+      <div class="col-span-1 flex w-full border-b border-zinc-200 md:px-0 px-4">
+        <article class="">
+          <div class="p-4 flex-grow flex flex-col">
+            <a href={{post.url}}>
+              <h2 class="font-[MarcellusSCRegular] text-[#1d1d1f] font-[900] tracking-tight leading-[0.75] text-4xl">{{ post.data.title }}</h2>
+            </a>
+            <time class="text-sm font-[SpecialGothic] text-zinc-500 font-[100] my-2">{{ post.date | date }}</time>
+            <p class="text-[#1d1d1f]/80 mb-4 font-[100] text-lg tracking-tight leading-[1.25]">
+              {{ post.data.excerpt }}
+              <a class="font-[500] text-2xl mt-1 text-black" href={{post.url}}>»</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    {%- endfor  %}
+  </div>
+</div>
