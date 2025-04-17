@@ -1,6 +1,6 @@
 {
   "name": "daniel-blog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "packageManager": "yarn@4.5.0",
