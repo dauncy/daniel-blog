@@ -6,7 +6,7 @@ tags:
   - posts
 excerpt: What are control flow components...? Why do I use them...? 
 permalink: /nextjs-control-flow-components/
-description: Explore NextJS control flow components & See my favorite implemtaion.
+description: Explore NextJS control flow components & See my favorite implementation.
 ---
 
 Control flow components in NextJS are specialized react components that allow us to conditionally render content based on certain conditions. Essentially control flows are a great way to abstract common functionality. 
@@ -117,7 +117,7 @@ import { VerifyAccess } from "@components/control-flows";
 export default function DashboardLayout({ children }) {
   return(
     <VerifyAccess
-      fallback={<LoginModal dismissable={false} />}
+      fallback={<LoginModal dismissible={false} />}
     >
       {children}
     </VerifyAccess>
@@ -131,12 +131,12 @@ When we build *production-level* apps, how often is our verification ever that s
 
 What happens when we add onboarding or subscriptions or some one off thing tied to the user we need to check against? 
 Usually, we fix this by adding flags to the props. Something like `onboardingStep?: OnboardingStep` 
-or `verifySubcription?: boolean` and so on...
+or `verifySubscription?: boolean` and so on...
 
 Soon our nice abstraction becomes a tangled mess of optional flags and booleans.
 At that point, we might as well just go back to our original *KISS* page-level implementation. At least our code would be more readable.
 
-So, what can we do to keep our abstraction clean, but also extensible to future unforseen requirements?
+So, what can we do to keep our abstraction clean, but also extensible to future unforeseen requirements?
 
 React components are just functions. And like any javascript function, callbacks can be passed as arguments.
 
@@ -176,14 +176,14 @@ import { OnboardingStep } from "@lib/types";
 
 export default function Page() {
   return(
-    <VerifyAcces>
+    <VerifyAccess>
       {({ user }) => {
         // user is typed!!
         const currentStep = user.onboardingStep;
         if (currentStep !== OnboardingStep.COMPLETED) {
           return(
             <div>
-              {"Looks like you didn't finish onboarindg"}
+              {"Looks like you didn't finish onboarding"}
               <Link href={'/onboarding'}>{"Finish"}</Link>
             </div>
           )
@@ -193,7 +193,7 @@ export default function Page() {
           <Dashboard user={user}/>
         )
       }}
-    </VerifyAcces>
+    </VerifyAccess>
   )
 }
 ```
@@ -206,7 +206,7 @@ import { OnboardingStep } from "@lib/types";
 
 export default function AddMembersPage() {
   return(
-    <VerifyAcces>
+    <VerifyAccess>
       {({ user }) => {
         if (!user.subscription || user.subscription.status !== 'active') {
           return (<NoSubscription />)
@@ -216,7 +216,7 @@ export default function AddMembersPage() {
           <InviteMembers subscription={subscription}/>
         )
       }}
-    </VerifyAcces>
+    </VerifyAccess>
   )
 }
 ```
@@ -283,7 +283,7 @@ The usage of this abstraction is simple:
 
 export default function MembersListPage() {
   return(
-    <VerifyAcces>
+    <VerifyAccess>
       {(user) => 
         <DataFetcher 
           fetcher={() => getMembersList({ organizationId: user.organization_id })}
@@ -297,7 +297,7 @@ export default function MembersListPage() {
           }
         </DataFetcher>
       }
-    </VerifyAcces>
+    </VerifyAccess>
   )
 }
 ```
