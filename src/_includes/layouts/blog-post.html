@@ -14,16 +14,27 @@ layout: layouts/base.html
 </article>
 
 <script>
+  const reservedWords = ['async', 'let', 'const', 'null', 'undefined', 'interface', 'function']
   window.addEventListener('DOMContentLoaded', (e) => {
     document.querySelectorAll('.token.keyword').forEach(element => {
-      if (element.textContent.trim() === 'undefined' || element.textContent.trim() === 'null' || element.textContent.trim() === 'let' || element.textContent.trim() === 'const' || element.textContent.trim() === 'function') {
+      const txt = element.textContent.trim()
+      if (reservedWords.includes(txt)) {
         element.classList.add('undefined-keyword');
       }
     });
     document.querySelectorAll('.token.variable').forEach(element => {
-      if (element.textContent.trim() === 'undefined' || element.textContent.trim() === 'null') {
+      const txt = element.textContent.trim()
+      if (reservedWords.includes(txt)) {
         element.classList.add('undefined-keyword');
         element.classList.remove('variable')
+      }
+    });
+
+    document.querySelectorAll('.token.function').forEach(element => {
+      const txt = element.textContent.trim()
+      if (reservedWords.includes(txt)) {
+        element.classList.add('undefined-keyword');
+        element.classList.remove('function')
       }
     });
   })
