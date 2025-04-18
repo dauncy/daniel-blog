@@ -201,6 +201,16 @@ pre[class*="language-tsx"] {
   color: #DCDCAA; /* Decorators */
 }
 
+.language-typescript.token.function-name,
+.language-tsx .token.function-name {
+  color: #DCDCAA; /* function names */
+}
+
+.language-typescript.token.constant-name,
+.language-tsx .token.constant-name {
+  color: #DCDCAA; /* function names */
+}
+
 /* JSX/TSX specific */
 .language-tsx .token.tag {
   color: #569CD6; /* JSX/TSX tags */
