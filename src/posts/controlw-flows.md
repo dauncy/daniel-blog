@@ -19,14 +19,16 @@ import { Suspense } from "react";
 
 export default function Page() {
   return(
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense 
+      fallback={<div>{"loading..."}</div>}
+    >
       <SomeAsyncComponent />
     </Suspense>
   )
 }
 ```
 
-React's Suspense component is a control flow component. The suspense component takes in two  separate nodes as props: `children` and `fallback`. While the promise node resolves, Suspense renders the fallback. Once the promise has been resolved, the component will render the value. Here's a pseudo-coe breakdown:
+React's Suspense component is a control flow component. The suspense component takes in two  separate nodes as props: `children` and `fallback`. While the promise node resolves, Suspense renders the fallback. Once the promise has been resolved, the component will render the value. Here's a pseudo-code breakdown:
 
 ```tsx
 export const Suspense = ({ 
@@ -58,7 +60,7 @@ export const Suspense = ({
 }
 ```
 
-In the actual react implementation, Suspense is not a regular component. It's a special component type handled directly by the React reconciler. The actual implementation of Suspense doesn't have a render method like regular components, rather react's reconciler handles Suspense boundaries specially when it encounters them. Nonetheless it's a solid example of control flow state management in components.
+In the actual react implementation, Suspense is not a regular component. It's a special component type handled directly by the react reconciler. The actual Suspense doesn't have a render method like regular components, rather react's reconciler handles Suspense boundaries specially when it encounters them. Nonetheless it's a solid example of control flow state management in components.
 
 ---
 
@@ -168,6 +170,7 @@ export const VerifyAccess = async ({
 ```
 
 Now we can have a little more control over our verification flow.
+
 We need to check the user's onboarding state? No worries.
 
 ```tsx
@@ -213,7 +216,7 @@ export default function AddMembersPage() {
         }
 
         return(
-          <InviteMembers subscription={subscription}/>
+          <InviteMembers subscription={user.subscription}/>
         )
       }}
     </VerifyAccess>
@@ -227,7 +230,7 @@ This implementation is a flexible and type-safe abstraction that can evolve with
 
 ## One last example
 
-I'm gonna drop one of my go-to control flow components that I use in almost every project. Hopefully y'all will find it as useful as I do...
+Lastly, I'm gonna drop one of my go-to control flow components that I use in almost every project. Hopefully y'all will find it as useful as I do...
 
 ```tsx
 //@components/control-flows/data-fetcher.tsx
@@ -306,4 +309,4 @@ export default function MembersListPage() {
 
 ## Final Thoughts
 
-The main takeaway - aside for my fondness towards render props - control flows are another useful tool to help us write maintainable code and flexible abstractions. 
+The main takeaway - aside for my fondness of render props - control flows are another useful tool to help us write maintainable code and flexible abstractions. 
